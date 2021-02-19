@@ -1,4 +1,4 @@
-### GeekBrains_Course_JavaCoreForAndroid_HW_Lesson_14
+### GeekBrains_GeekBrains_Course_JavaAlgorithms_HW
 ---
 ### Сводная домашняя по курсу.
 Студента GeekBrains ***Веремеенко Дмитрия***    
