@@ -48,6 +48,18 @@ public class MyArrQueue<T> {
         return this.queue[this.front];
     }
 
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public boolean isFull() {
+        return count == maxSize;
+    }
+
+    public int size() {
+        return count;
+    }
+
     @Override
     public String toString() {
         if (this.count == 0)

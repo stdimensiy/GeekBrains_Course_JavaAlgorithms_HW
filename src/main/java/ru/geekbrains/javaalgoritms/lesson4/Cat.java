@@ -11,7 +11,7 @@ package ru.geekbrains.javaalgoritms.lesson4;
  * Created 26.02.2021
  * v 1.0
  */
-public class Cat {
+public class Cat implements Comparable{
     private static int count;
     private String name;
     private double weight;
@@ -80,5 +80,14 @@ public class Cat {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Cat obj = (Cat) o;
+        if(this.age == obj.age)
+            return 0;
+        else
+            return this.age > obj.age ? 1 : -1;
     }
 }

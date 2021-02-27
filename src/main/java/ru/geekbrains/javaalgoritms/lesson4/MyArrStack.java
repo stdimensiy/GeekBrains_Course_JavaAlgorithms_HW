@@ -39,6 +39,18 @@ public class MyArrStack<T> {
         return this.stack[this.top--];
     }
 
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == maxSize - 1;
+    }
+
+    public int size() {
+        return top + 1;
+    }
+
     @Override
     public String toString() {
         if (this.top == -1)
@@ -52,7 +64,7 @@ public class MyArrStack<T> {
                 break;
             } else {
                 sb.append(t);
-                if (x < stack.length - 1 && stack[x+1]!=null) sb.append(", ");
+                if (x < stack.length - 1 && stack[x + 1] != null) sb.append(", ");
             }
         }
         return sb.append(']').toString();

@@ -14,6 +14,7 @@ package ru.geekbrains.javaalgoritms.lesson4;
 
 public class MyObjStack<T> {
     private UnidirectionElement<T> top;
+    private int count;
 
     public MyObjStack() {
         this.top = null;
@@ -23,6 +24,7 @@ public class MyObjStack<T> {
         UnidirectionElement<T> element = new UnidirectionElement<>(newElem);
         element.setNext(this.top);
         this.top = element;
+        count++;
         return element;
     }
 
@@ -33,7 +35,16 @@ public class MyObjStack<T> {
     public UnidirectionElement<T> pop() {
         UnidirectionElement<T> temp = this.top;
         this.top = this.top.getNext();
+        if (count != 0) count--;
         return temp;
+    }
+
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public int size() {
+        return count;
     }
 
     @Override

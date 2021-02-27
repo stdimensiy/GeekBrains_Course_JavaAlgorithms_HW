@@ -50,7 +50,11 @@ public class MyObjQueue<T> {
         return this.front;
     }
 
-    public int getCount() {
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public int size() {
         return count;
     }
 
