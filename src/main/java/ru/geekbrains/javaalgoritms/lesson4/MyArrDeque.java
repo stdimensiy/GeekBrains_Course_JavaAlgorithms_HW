@@ -105,7 +105,6 @@ public class MyArrDeque<T> {
         sb.append('[');
         for (int x = 0, y = this.front; x < this.count; x++) {
             if (y == maxSize) y = 0;
-            System.out.println("count = " + this.count + " Обращаюсь к элементу " + y);
             T t = queue[y++];
             sb.append(t);
             if (x < this.count - 1) sb.append(", ");
