@@ -49,6 +49,9 @@ public class Std_HW_Lesson4 {
 
     private static long timeStart;
 
+
+    private static TableInfo tableInfo = new TableInfo();
+
     public static void main(String[] args) {
         System.out.println("Домашнее задание №4");
 
@@ -64,6 +67,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода push()" + stackUtilCat.push(new Cat("Мурзик")));
         System.out.println(" - Результат работы метода push()" + stackUtilCat.push(new Cat("Дурсик")));
         String tw_StUt_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_OFFER_LAST_UTIL, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всего стека встроенным методом toString
         System.out.println(" ---> Стек stackUtilCat (базовый)  заполнен: " + stackUtilCat);
         // Процедура - "посмотреть" (peek) на верхний элемент стека (возвращает значение элемента и НЕ стирает его)
@@ -72,12 +76,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + stackUtilCat.peek());
         System.out.println(" - Результат работы метода peek()" + stackUtilCat.peek());
         String tw_StUt_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_PEEK_LAST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) верхний элемент стека (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pop()" + stackUtilCat.pop());
         System.out.println(" - Результат работы метода pop()" + stackUtilCat.pop());
         System.out.println(" - Результат работы метода pop()" + stackUtilCat.pop());
         String tw_StUt_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_POLL_FIRST_UTIL, System.nanoTime() - timeStart);
         // Отображение итогового состояния всего стека встроенным методом toString
         System.out.println("---> Стек stackUtilCat (базовый) итог. вар.: " + stackUtilCat);
 
@@ -89,6 +95,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода push()" + myArrStack.push(new Cat("Мурзик")));
         System.out.println(" - Результат работы метода push()" + myArrStack.push(new Cat("Дурсик")));
         String tw_StMA_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_OFFER_LAST_MYARR, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всего стека встроенным методом toString
         System.out.println(" ---> Стек myArrStack (реализация через массив) заполнен: " + myArrStack);
         // Процедура - "посмотреть" (peek) на верхний элемент стека (возвращает значение элемента и НЕ стирает его)
@@ -97,12 +104,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + myArrStack.peek());
         System.out.println(" - Результат работы метода peek()" + myArrStack.peek());
         String tw_StMA_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_PEEK_LAST_MYARR, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) верхний элемент стека (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pop()" + myArrStack.pop());
         System.out.println(" - Результат работы метода pop()" + myArrStack.pop());
         System.out.println(" - Результат работы метода pop()" + myArrStack.pop());
         String tw_StMA_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_POLL_FIRST_MYARR, System.nanoTime() - timeStart);
         // Отображение итогового состояния всего стека встроенным методом toString
         System.out.println("---> Стек myArrStack (реализация через массив) итог. вар.: " + myArrStack);
 
@@ -114,6 +123,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода push()" + myObjStack.push(new Cat("Мурзик")));
         System.out.println(" - Результат работы метода push()" + myObjStack.push(new Cat("Дурсик")));
         String tw_StMO_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_OFFER_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всего стека встроенным методом toString
         System.out.println(" ---> Стек MyObjStack реализованного на базе коллекции объектов заполнен: " + myObjStack);
         // Процедура - "посмотреть" (peek) на верхний элемент стека (возвращает значение элемента и НЕ стирает его)
@@ -122,12 +132,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + myObjStack.peek());
         System.out.println(" - Результат работы метода peek()" + myObjStack.peek());
         String tw_StMO_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_PEEK_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) верхний элемент стека (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pop()" + myObjStack.pop());
         System.out.println(" - Результат работы метода pop()" + myObjStack.pop());
         System.out.println(" - Результат работы метода pop()" + myObjStack.pop());
         String tw_StMO_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setStack(TableInfo.R_POLL_FIRST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение итогового состояния всего стека встроенным методом toString
         System.out.println("---> Стек MyObjStack реализованного на базе коллекции объектов итог. вар.: " + myObjStack);
         //СТЕКИ ------------  модуль работы с основными методами трех стеков базовым (util) и двумя собственными
@@ -145,6 +157,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offer()" + (queueUtilCat.offer(new Cat("Мурзик")) ? " true - элемент " + new Cat("Мурзик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offer()" + (queueUtilCat.offer(new Cat("Дурсик")) ? " true - элемент " + new Cat("Дурсик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_QuUt_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_OFFER_LAST_UTIL, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всей очереди встроенным методом toString
         System.out.println(" ---> Очередь (по представлению toString) для queueUtilCat (базовый) заполнена: " + queueUtilCat);
         // Процедура - "посмотреть" (peek) на фронтальный элемент очереди (выход) (возвращает значение элемента и НЕ стирает его)
@@ -153,12 +166,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + queueUtilCat.peek());
         System.out.println(" - Результат работы метода peek()" + queueUtilCat.peek());
         String tw_QuUt_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_PEEK_LAST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) фронтальный элемент очереди (выход) и стереть его
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода poll()" + queueUtilCat.poll());
         System.out.println(" - Результат работы метода poll()" + queueUtilCat.poll());
         System.out.println(" - Результат работы метода poll()" + queueUtilCat.poll());
         String tw_QuUt_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_POLL_FIRST_UTIL, System.nanoTime() - timeStart);
         // Отображение итогового состояния всей очереди встроенным методом toString
         System.out.println("---> Очередь queueUtilCat после всех модификаций итог. вар.: " + queueUtilCat);
 
@@ -170,6 +185,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offer()" + (myArrQueue.offer(new Cat("Мурзик")) ? " true - элемент " + new Cat("Мурзик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offer()" + (myArrQueue.offer(new Cat("Дурсик")) ? " true - элемент " + new Cat("Дурсик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_QuMA_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_OFFER_LAST_MYARR, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всей очереди встроенным методом toString
         System.out.println(" ---> Очередь (по представлению toString) для myArrQueue заполнена: " + myArrQueue);
         // Процедура - "посмотреть" (peek) на фронтальный элемент очереди (выход) (возвращает значение элемента и НЕ стирает его)
@@ -178,12 +194,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + myArrQueue.peek());
         System.out.println(" - Результат работы метода peek()" + myArrQueue.peek());
         String tw_QuMA_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_PEEK_LAST_MYARR, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) фронтальный элемент очереди (выход) и стереть его
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода poll()" + myArrQueue.poll());
         System.out.println(" - Результат работы метода poll()" + myArrQueue.poll());
         System.out.println(" - Результат работы метода poll()" + myArrQueue.poll());
         String tw_QuMA_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_POLL_FIRST_MYARR, System.nanoTime() - timeStart);
         // Отображение итогового состояния всей очереди встроенным методом toString
         System.out.println("---> Очередь myArrQueue итог. вар.: " + myArrQueue);
 
@@ -195,6 +213,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offer()" + myObjQueue.offer(new Cat("Мурзик")));
         System.out.println(" - Результат работы метода offer()" + myObjQueue.offer(new Cat("Дурсик")));
         String tw_QuMO_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_OFFER_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всей очереди встроенным методом toString
         System.out.println(" ---> Очередь (по представлению toString) для myObjQueue заполнена: " + myObjQueue);
         // Процедура - "посмотреть" (peek) на фронтальный элемент очереди (выход) (возвращает значение элемента и НЕ стирает его)
@@ -203,12 +222,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + myObjQueue.peek());
         System.out.println(" - Результат работы метода peek()" + myObjQueue.peek());
         String tw_QuMO_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_PEEK_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) фронтальный элемент очереди (выход) и стереть его
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода poll()" + myObjQueue.poll());
         System.out.println(" - Результат работы метода poll()" + myObjQueue.poll());
         System.out.println(" - Результат работы метода poll()" + myObjQueue.poll());
         String tw_QuMO_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setQueue(TableInfo.R_POLL_FIRST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение итогового состояния всй очереди встроенным методом toString
         System.out.println("---> Очередь myObjQueue итог. вар.: " + myObjQueue);
         //
@@ -228,38 +249,44 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offerLast()" + (dequeUtilCat.offerLast(new Cat("Мурзик")) ? " true - элемент " + new Cat("Мурзик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerLast()" + (dequeUtilCat.offerLast(new Cat("Дурсик")) ? " true - элемент " + new Cat("Дурсик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_DeUt_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_LAST_UTIL, System.nanoTime() - timeStart);
         // добавляем элементы в голову очереди (вот это уже особенность)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода offerFirst()" + (dequeUtilCat.offerFirst(new Cat("Мурка")) ? " true - элемент " + new Cat("Мурка") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerFirst()" + (dequeUtilCat.offerFirst(new Cat("Алиса")) ? " true - элемент " + new Cat("Алиса") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerFirst()" + (dequeUtilCat.offerFirst(new Cat("Джина")) ? " true - элемент " + new Cat("Джина") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_DeUt_Pl = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_FIRST_UTIL, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всей очереди встроенным методом toString
         System.out.println(" ---> Очередь (по представлению toString) для dequeUtilCat (базовый)  заполнена: " + dequeUtilCat);
         // Процедура - "посмотреть" (peekFirst) на элемент головы дека (возвращает значение элемента и НЕ стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода peekFirst()" + dequeUtilCat.peekFirst());
-        System.out.println(" - Результат работы метода peekFirst()" + dequeUtilCat.peekFirst());
+        System.out.println(" - Результат работы метода p317eekFirst()" + dequeUtilCat.peekFirst());
         System.out.println(" - Результат работы метода peekFirst()" + dequeUtilCat.peekFirst());
         String tw_DeUt_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_FIRST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "посмотреть" (peekLast) на элемент хвоста дека (возвращает значение элемента и НЕ стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода peekLast()" + dequeUtilCat.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + dequeUtilCat.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + dequeUtilCat.peekLast());
         String tw_DeUt_Pk = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_LAST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) верхний элемент из головы очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollFirst()" + dequeUtilCat.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + dequeUtilCat.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + dequeUtilCat.pollFirst());
         String tw_DeUt_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_FIRST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) крайний элемент из хвоста очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollLast()" + dequeUtilCat.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + dequeUtilCat.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + dequeUtilCat.pollLast());
         String tw_DeUt_Pd = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_LAST_UTIL, System.nanoTime() - timeStart);
         // Отображение итогового состояния всй очереди встроенным методом toString
         System.out.println("---> Очередь dequeUtilCat итог. вар.: " + dequeUtilCat);
 
@@ -272,12 +299,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offerLast()" + (myArrDeque.offerLast(new Cat("Мурзик")) ? " true - элемент " + new Cat("Мурзик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerLast()" + (myArrDeque.offerLast(new Cat("Дурсик")) ? " true - элемент " + new Cat("Дурсик") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_DeMA_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_LAST_MYARR, System.nanoTime() - timeStart);
         // добавляем элементы в голову очереди (вот это уже особенность)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода offerFirst()" + (myArrDeque.offerFirst(new Cat("Мурка")) ? " true - элемент " + new Cat("Мурка") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerFirst()" + (myArrDeque.offerFirst(new Cat("Алиса")) ? " true - элемент " + new Cat("Алиса") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offerFirst()" + (myArrDeque.offerFirst(new Cat("Джина")) ? " true - элемент " + new Cat("Джина") + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_DeMA_Pl = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_FIRST_MYARR, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всей очереди встроенным методом toString
         System.out.println(" ---> Дека (по представлению toString) для myArrDeque заполнена: " + myArrDeque);
         // Процедура - "посмотреть" (peekFirst) на элемент головы дека (возвращает значение элемента и НЕ стирает его)
@@ -286,24 +315,28 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peekFirst()" + myArrDeque.peekFirst());
         System.out.println(" - Результат работы метода peekFirst()" + myArrDeque.peekFirst());
         String tw_DeMA_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_FIRST_MYARR, System.nanoTime() - timeStart);
         // Процедура - "посмотреть" (peekLast) на элемент хвоста дека (возвращает значение элемента и НЕ стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода peekLast()" + myArrDeque.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + myArrDeque.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + myArrDeque.peekLast());
         String tw_DeMA_Pk = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_LAST_MYARR, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) верхний элемент из головы очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollFirst()" + myArrDeque.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + myArrDeque.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + myArrDeque.pollFirst());
         String tw_DeMA_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_FIRST_MYARR, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) крайний элемент из хвоста очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollLast()" + myArrDeque.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + myArrDeque.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + myArrDeque.pollLast());
         String tw_DeMA_Pd = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_LAST_MYARR, System.nanoTime() - timeStart);
         // Отображение итогового состояния всй очереди (дек) встроенным методом toString
         System.out.println("---> Дека myArrDeque итог. вар.: " + myArrDeque);
 
@@ -316,12 +349,14 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offerLast()" + myObjDeque.offerLast(new Cat("Мурзик")));
         System.out.println(" - Результат работы метода offerLast()" + myObjDeque.offerLast(new Cat("Дурсик")));
         String tw_DeMO_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_LAST_MYOBJ, System.nanoTime() - timeStart);
         // добавляем элементы в голову очереди (вот это уже особенность)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода offerFirst()" + myObjDeque.offerFirst(new Cat("Мурка")));
         System.out.println(" - Результат работы метода offerFirst()" + myObjDeque.offerFirst(new Cat("Алиса")));
         System.out.println(" - Результат работы метода offerFirst()" + myObjDeque.offerFirst(new Cat("Джина")));
         String tw_DeMO_Pl = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_OFFER_FIRST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния деки встроенным методом toString
         System.out.println(" ---> Дека (по представлению toString) для myObjDeque заполнена: " + myObjDeque);
         // Процедура - "посмотреть" (peekFirst) на элемент головы дека (возвращает значение элемента и НЕ стирает его)
@@ -330,24 +365,28 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peekFirst()" + myObjDeque.peekFirst());
         System.out.println(" - Результат работы метода peekFirst()" + myObjDeque.peekFirst());
         String tw_DeMO_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_FIRST_MYOBJ, System.nanoTime() - timeStart);
         // Процедура - "посмотреть" (peekLast) на элемент хвоста дека (возвращает значение элемента и НЕ стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода peekLast()" + myObjDeque.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + myObjDeque.peekLast());
         System.out.println(" - Результат работы метода peekLast()" + myObjDeque.peekLast());
         String tw_DeMO_Pk = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_PEEK_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) верхний элемент из головы очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollFirst()" + myObjDeque.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + myObjDeque.pollFirst());
         System.out.println(" - Результат работы метода pollFirst()" + myObjDeque.pollFirst());
         String tw_DeMO_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_FIRST_MYOBJ, System.nanoTime() - timeStart);
         // Процедура - "снять" (pollFirst) крайний элемент из хвоста очереди (дека) (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода pollLast()" + myObjDeque.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + myObjDeque.pollLast());
         System.out.println(" - Результат работы метода pollLast()" + myObjDeque.pollLast());
         String tw_DeMO_Pd = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setDeque(TableInfo.R_POLL_LAST_MYOBJ, System.nanoTime() - timeStart);
         // Отображение итогового состояния всего дека, после манипуляций, переопределенным методом toString
         System.out.println("---> Дека myObjDeque итог. вар.: " + myObjDeque);
         //ДЕКИ ------------  модуль работы с основными методами трех реализаций двунаправленных очередей базовой (util) и двумя собственными
@@ -369,6 +408,7 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода offer()" + (priorityQueueUtilCat.offer(new Cat("Мурзик", 2.8, 3)) ? " true - элемент " + new Cat("Мурзик", 2.8, 3) + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         System.out.println(" - Результат работы метода offer()" + (priorityQueueUtilCat.offer(new Cat("Дурсик", 2.9, 6)) ? " true - элемент " + new Cat("Дурсик", 2.9, 6) + " добавлен в очередь." : "Ошибка! Элемент не добавлен в очередь."));
         String tw_PqUt_Pu = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setPriority(TableInfo.R_OFFER_LAST_UTIL, System.nanoTime() - timeStart);
         // Отображение промежуточного состояния всего стека встроенным методом toString
         System.out.println(" ---> Очередь (по представлению toString) для queueUtilCat (базовый)  заполнена: " + priorityQueueUtilCat);
         // Процедура - "посмотреть" (peek) на верхний элемент стека (возвращает значение элемента и НЕ стирает его)
@@ -377,14 +417,27 @@ public class Std_HW_Lesson4 {
         System.out.println(" - Результат работы метода peek()" + priorityQueueUtilCat.peek());
         System.out.println(" - Результат работы метода peek()" + priorityQueueUtilCat.peek());
         String tw_PqUt_Pe = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setPriority(TableInfo.R_PEEK_LAST_UTIL, System.nanoTime() - timeStart);
         // Процедура - "снять" (pop) верхний элемент стека (возвращает значение элемента и стирает его)
         timeStart = System.nanoTime();
         System.out.println(" - Результат работы метода poll()" + priorityQueueUtilCat.poll());
         System.out.println(" - Результат работы метода poll()" + priorityQueueUtilCat.poll());
         System.out.println(" - Результат работы метода poll()" + priorityQueueUtilCat.poll());
         String tw_PqUt_Po = String.format("%1$10d", System.nanoTime() - timeStart);
+        tableInfo.setPriority(TableInfo.R_POLL_FIRST_UTIL, System.nanoTime() - timeStart);
         // Отображение итогового состояния всего стека встроенным методом toString
         System.out.println("---> Очередь queueUtilCat итог. вар.: " + priorityQueueUtilCat);
+
+        //заполнение "-не проведен-"
+        tableInfo.setPriority(TableInfo.R_OFFER_LAST_MYARR, 0L);
+        tableInfo.setPriority(TableInfo.R_OFFER_LAST_MYOBJ, 0L);
+        tableInfo.setPriority(TableInfo.R_PEEK_LAST_MYARR, 0L);
+        tableInfo.setPriority(TableInfo.R_PEEK_LAST_MYOBJ, 0L);
+        tableInfo.setPriority(TableInfo.R_POLL_FIRST_MYARR, 0L);
+        tableInfo.setPriority(TableInfo.R_POLL_FIRST_MYOBJ, 0L);
+
+
+        //tableInfo[0] = new TableInfo("Util", "Добавить: push(), offer() или offerLast()");
 
         // вывод сводного результата среднего времени выполнения однотипных основных операций для стека, очереди, дека и приоритетной очереди
         System.out.println();
@@ -412,6 +465,104 @@ public class Std_HW_Lesson4 {
         System.out.println("- MyObj - Получ./удал.: pop(), poll() ,pollFirst()  - " + tw_StMO_Po + " ns   ---  " + tw_QuMO_Po + " ns  ---  " + tw_DeMO_Po + " ns  ---  -не проведен-  -");
         System.out.println("- MyObj -  Получить и удалить: pollLast()           - " + tw_StUt_NP + "   ---  " + tw_StUt_NP + "  ---  " + tw_DeMO_Pd + " ns  ---  " + tw_StUt_NP + "  -");
         System.out.println("-----------------------------------------------------------------------------------------------------------------------------------");
+
+
+        //вывод таблицы итогов
+        tableInfo.print();
+    }
+
+    private static class TableInfo {
+        private static final int R_OFFER_LAST_UTIL = 0;
+        private static final int R_OFFER_FIRST_UTIL = 1;
+        private static final int R_OFFER_LAST_MYARR = 2;
+        private static final int R_OFFER_FIRST_MYARR = 3;
+        private static final int R_OFFER_LAST_MYOBJ = 4;
+        private static final int R_OFFER_FIRST_MYOBJ = 5;
+        private static final int R_PEEK_LAST_UTIL = 6;
+        private static final int R_PEEK_FIRST_UTIL = 7;
+        private static final int R_PEEK_LAST_MYARR = 8;
+        private static final int R_PEEK_FIRST_MYARR = 9;
+        private static final int R_PEEK_LAST_MYOBJ = 10;
+        private static final int R_PEEK_FIRST_MYOBJ = 11;
+        private static final int R_POLL_FIRST_UTIL = 12;
+        private static final int R_POLL_LAST_UTIL = 13;
+        private static final int R_POLL_FIRST_MYARR = 14;
+        private static final int R_POLL_LAST_MYARR = 15;
+        private static final int R_POLL_FIRST_MYOBJ = 16;
+        private static final int R_POLL_LAST_MYOBJ = 17;
+        private Row[] rows;
+
+        public TableInfo() {
+            rows = new Row[] {
+                    new Row("Util",  "Добавить: push(), offer() или offerLast()"),
+                    new Row("Util",  "Добавить: offerFirst()"),
+                    new Row("MyArr", "Добавить: push(), offer() или offerLast()"),
+                    new Row("MyArr", "Добавить: offerFirst()"),
+                    new Row("MyObj", "Добавить: push(), offer() или offerLast()"),
+                    new Row("MyObj", "Добавить: offerFirst()"),
+                    new Row("Util",  "Получить не удалять: peek(), peekLast()"),
+                    new Row("Util",  "Получить не удалять: peekFirst()"),
+                    new Row("MyArr", "Получить не удалять: peek(), peekLast()"),
+                    new Row("MyArr", "Получить не удалять: peekFirst()"),
+                    new Row("MyObj", "Получить не удалять: peek(), peekLast()"),
+                    new Row("MyObj", "Получить не удалять: peekFirst()"),
+                    new Row("Util",  "Получ./удал.: pop(), poll() ,pollFirst()"),
+                    new Row("Util",  "Получить и удалить: pollLast()"),
+                    new Row("MyArr", "Получ./удал.: pop(), poll() ,pollFirst()"),
+                    new Row("MyArr", "Получить и удалить: pollLast()"),
+                    new Row("MyObj", "Получ./удал.: pop(), poll() ,pollFirst()"),
+                    new Row("MyObj", "Получить и удалить: pollLast()")
+            };
+        }
+
+        private void setStack(int position, Long value) {
+            rows[position].stack = value;
+        }
+        private void setQueue(int position, Long value) {
+            rows[position].queue = value;
+        }
+        private void setDeque(int position, Long value) {
+            rows[position].deque = value;
+        }
+        private void setPriority(int position, Long value) {
+            rows[position].priority = value;
+        }
+
+        private void print() {
+            for(Row row: rows) {
+                System.out.println(row.toString());
+            }
+        }
+
+        private class Row {
+            String type;
+            String name;
+            Long stack;
+            Long queue;
+            Long deque;
+            Long priority;
+            private Row(String type, String name) {
+                this.type = type;
+                this.name = name;
+            }
+
+            private String longToStr(Long value) {
+                String text = "";
+                if (value == null) {
+                    text = String.format("%13s", ".... ");
+                } else if (value.equals(0L)) {
+                    text = "-не проведен-";
+                } else {
+                    text = String.format("%10s ns", value);
+                }
+                return text;
+            }
+
+            @Override
+            public String toString() {
+                return String.format("| %-5s | %-41s | %s | %s | %s | %s |", type, name, longToStr(stack), longToStr(queue), longToStr(deque), longToStr(priority));
+            }
+        }
     }
 
 }
