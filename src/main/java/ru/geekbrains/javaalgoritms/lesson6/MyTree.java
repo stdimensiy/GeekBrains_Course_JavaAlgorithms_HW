@@ -158,79 +158,79 @@ public class MyTree {
     // Задание 6.5
     // Удаление узла по значению (ключу) с использованием поля родителя
     public boolean deleteNode(int value) {
-        Node currentNode = rootNode;
-        Node parentNode = rootNode;
-        boolean isLeftChild = true;
-        // подзадача №1 найти удаляемый узел
-        currentNode = findNodeByValue(value);
+        // предварительная задача -  найти удаляемый узел
+        Node currentNode = findNodeByValue(value);
         if (currentNode == null)
-            return false;              // если узел не найден выходим из метода возвращаем "неудача"
-        parentNode = currentNode.getParent();
-
+            return false;                                 // если узел не найден выходим из метода возвращаем "неудача"
         //ситуация Первая - узел это Лист (потомков нет)
         if (currentNode.getLeftChild() == null &&
                 currentNode.getRightChild() == null) {
             if (currentNode == rootNode) {
-                rootNode = null;               // если узел - корень, то дерево очищается
+                rootNode = null;                                   // если узел - корень, то дерево очищается
                 count = 0;
                 levels = 0;
             } else {
                 if (currentNode.getParent().getLeftChild() == currentNode)
-                    currentNode.getParent().setLeftChild(null); // иначе - левый узел отсоединяется, от родителя
+                    currentNode.getParent().setLeftChild(null);    // иначе - левый узел отсоединяется, от родителя
                 if (currentNode.getParent().getRightChild() == currentNode)
-                    currentNode.getParent().setRightChild(null); // иначе - правый узел отсоединяется, от родителя
+                    currentNode.getParent().setRightChild(null);   // иначе - правый узел отсоединяется, от родителя
                 count--;
                 if (currentNode == rightmostNode) rightmostNode = currentNode.getParent();
                 if (currentNode == leftmostNode) leftmostNode = currentNode.getParent();
             }
             // ситуация вторая  - у удаляемого узла нет правого потомка тогда узел просто заменяется левым поддеревом
         } else if (currentNode.getRightChild() == null) {
-            if (currentNode == rootNode) {                   // опять же если это корень дерева
+            if (currentNode == rootNode) {                         // опять же если это корень дерева
                 rootNode = currentNode.getLeftChild();
-                count--;
                 levels--;
-            } else if (isLeftChild)
-                parentNode.setLeftChild(currentNode.getLeftChild());
+            } else if (currentNode.getParent().getLeftChild() == currentNode)
+                currentNode.getParent().setLeftChild(currentNode.getLeftChild());
             else
-                parentNode.setRightChild(currentNode.getLeftChild());
-        } else if (currentNode.getLeftChild() == null) { // узел заменяется правым поддеревом, если левого потомка нет
-            if (currentNode == rootNode)
+                currentNode.getParent().setRightChild(currentNode.getLeftChild());
+            count--;
+            // ситуация третья - у удаляемого узла нет левого потомка
+        } else if (currentNode.getLeftChild() == null) {
+            if (currentNode == rootNode){                           // опять же если это корень дерева
                 rootNode = currentNode.getRightChild();
-            else if (isLeftChild)
-                parentNode.setLeftChild(currentNode.getRightChild());
-            else
-                parentNode.setRightChild(currentNode.getRightChild());
-        } else { // если есть два потомка, узел заменяется преемником
-            Node heir = receiveHeir(currentNode);// поиск преемника для удаляемого узла
-            if (currentNode == rootNode)
+                levels--;
+            } else if (currentNode.getParent().getLeftChild() == currentNode){
+                currentNode.getParent().setLeftChild(currentNode.getRightChild());
+            } else {
+                currentNode.getParent().setRightChild(currentNode.getRightChild());
+            }
+            count--;
+            // ситуация четвертая - у узла есть два потомка, необходимо найти и заменить узел приемником
+        } else {
+            Node heir = receiveHeir(currentNode);                   // поиск преемника для удаляемого узла
+            if (currentNode == rootNode) {                          // опять же если это корень дерева
                 rootNode = heir;
-            else if (isLeftChild)
-                parentNode.setLeftChild(heir);
+                levels--;
+            }
+            else if (currentNode.getParent().getLeftChild() == currentNode)
+                currentNode.getParent().setLeftChild(heir);
             else
-                parentNode.setRightChild(heir);
+                currentNode.getParent().setRightChild(heir);
+            count--;
         }
-        return true; // элемент успешно удалён
+        return true;
     }
 
-    // метод возвращает узел со следующим значением после передаваемого аргументом.
-    // для этого он сначала переходим к правому потомку, а затем
-    // отслеживаем цепочку левых потомков этого узла.
+    // вспомогательный метод поиска приемника
     private Node receiveHeir(Node node) {
-        Node parentNode = node;
+
         Node heirNode = node;
-        Node currentNode = node.getRightChild();               // Переход к правому потомку
-        while (currentNode != null)                            // Пока остаются левые потомки
-        {
-            parentNode = heirNode;                             // потомка задаём как текущий узел
+        Node currentNode = node.getRightChild();                           // Переход к правому потомку
+        while (currentNode != null)                                        // Пока узел есть (перебираемся по левым потомкам)
+        {                                                                  // потомка делаем текущим узлом
             heirNode = currentNode;
-            currentNode = currentNode.getLeftChild();          // переход к левому потомку
+            currentNode = currentNode.getLeftChild();
         }
-        // Если преемник не является
-        if (heirNode != node.getRightChild())                  // правым потомком,
-        { // создать связи между узлами
-            parentNode.setLeftChild(heirNode.getRightChild());
+                                                                            // Если преемник не является
+        if (heirNode != node.getRightChild())                               // правым потомком,
+        {                                                                   // создать связи между узлами
+            heirNode.getParent().setLeftChild(heirNode.getRightChild());
             heirNode.setRightChild(node.getRightChild());
         }
-        return heirNode;                                        // возвращаем приемника
+        return heirNode;                                                    // возвращаем приемника
     }
 }
