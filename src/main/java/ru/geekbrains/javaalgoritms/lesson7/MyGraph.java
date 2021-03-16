@@ -26,6 +26,12 @@ public class MyGraph {
     public MyGraph() {
         vertexArray = new Vertex[MAX_VERTS];
         adjMat = new int[MAX_VERTS][MAX_VERTS];
+        nVerts = 0;
+        for (int j = 0; j < MAX_VERTS; j++) {
+            for (int k = 0; k < MAX_VERTS; k++) {
+                adjMat[j][k] = 0;
+            }
+        }
         stack = new Stack<>();
     }
 
